@@ -4,6 +4,7 @@
 .header-wrapper {
   background-color: $color-gray-cultured;
 }
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -32,7 +33,6 @@
     i {
       font-size: 24px;
     }
-
 
     &__description {
       text-align: center;

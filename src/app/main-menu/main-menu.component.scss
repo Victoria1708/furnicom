@@ -1,0 +1,69 @@
+@import "abstracts/variables";
+@import "abstracts/colors";
+
+.main-menu-wrapper {
+  background-color: $color-grey-davys;
+
+  .main-menu {
+    display: flex;
+    height: 40px;
+    align-items: center;
+
+    .home-logo-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 4%;
+      height: 100%;
+      background-color: $color-primary;
+      cursor: pointer;
+
+      i {
+        font-size: 18px;
+        color: $color-neutral;
+      }
+    }
+
+    &__item {
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: 5px 15px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $color-primary;
+      }
+
+      a {
+        color: $color-neutral;
+        font-weight: bold;
+      }
+    }
+
+    .empty {
+      flex-basis: 38%;
+    }
+
+    .hot-deals {
+      padding: 0 30px 0 30px;
+
+      a {
+        font-weight: bold;
+        color: $color-warning;
+
+        &:hover {
+          color: $color-primary;
+        }
+      }
+    }
+
+    .social-media-links {
+      a {
+        padding: 8px;
+        color: $color-gray-spanish;
+      }
+    }
+  }
+}
