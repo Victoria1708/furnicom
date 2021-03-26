@@ -1,0 +1,85 @@
+@import "abstracts/variables";
+@import "abstracts/colors";
+
+$menu-height: 4rem;
+
+.main-menu-wrapper {
+  background-color: $color-grey-davys;
+
+  .main-menu {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .menu-prime {
+    display: flex;
+    align-items: center;
+
+    &__item {
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      height: $menu-height;
+
+      &.home-logo {
+        background-color: $color-primary;
+
+        i {
+          font-size: 1.8rem;
+          color: $color-neutral;
+        }
+      }
+
+      &:hover {
+        background-color: $color-primary;
+      }
+
+      a {
+        color: $color-neutral;
+        font-weight: bold;
+      }
+    }
+
+    .hot-deals {
+      padding: 0 3rem;
+
+      a {
+        font-weight: bold;
+        color: $color-warning;
+
+        &:hover {
+          color: $color-primary;
+        }
+      }
+    }
+  }
+
+  .social-media-links {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    width: $shopping-cart-width;
+
+    &__item {
+      flex: 1;
+      text-align: center;
+
+      &:hover {
+        cursor: pointer;
+
+        a {
+          color: $color-warning;
+          transition: all 0.3s ease-out;
+        }
+      }
+
+      a {
+        color: $color-gray-spanish;
+        line-height: $menu-height;
+      }
+    }
+  }
+}
