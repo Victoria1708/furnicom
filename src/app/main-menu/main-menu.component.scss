@@ -1,36 +1,36 @@
 @import "abstracts/variables";
 @import "abstracts/colors";
 
+$menu-height: 4rem;
+
 .main-menu-wrapper {
   background-color: $color-grey-davys;
 
   .main-menu {
     display: flex;
-    height: 40px;
+    justify-content: space-between;
+  }
+
+  .menu-prime {
+    display: flex;
     align-items: center;
 
-    .home-logo-wrapper {
+    &__item {
+      padding: 0 1.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 4%;
-      height: 100%;
-      background-color: $color-primary;
       cursor: pointer;
+      height: $menu-height;
 
-      i {
-        font-size: 18px;
-        color: $color-neutral;
+      &.home-logo {
+        background-color: $color-primary;
+
+        i {
+          font-size: 1.8rem;
+          color: $color-neutral;
+        }
       }
-    }
-
-    &__item {
-      box-sizing: border-box;
-      display: flex;
-      align-items: center;
-      height: 100%;
-      padding: 5px 15px;
-      cursor: pointer;
 
       &:hover {
         background-color: $color-primary;
@@ -42,12 +42,8 @@
       }
     }
 
-    .empty {
-      flex-basis: 38%;
-    }
-
     .hot-deals {
-      padding: 0 30px 0 30px;
+      padding: 0 3rem;
 
       a {
         font-weight: bold;
@@ -58,11 +54,31 @@
         }
       }
     }
+  }
 
-    .social-media-links {
+  .social-media-links {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    width: $shopping-cart-width;
+
+    &__item {
+      flex: 1;
+      text-align: center;
+
+      &:hover {
+        cursor: pointer;
+
+        a {
+          color: $color-warning;
+          transition: all 0.3s ease-out;
+        }
+      }
+
       a {
-        padding: 8px;
         color: $color-gray-spanish;
+        line-height: $menu-height;
       }
     }
   }
