@@ -1,19 +1,14 @@
+@import "abstracts/colors";
+
 html {
   font-size: 10px;
 }
 
 body {
   margin: 0;
-
-  p {
-    margin: 0;
-  }
-
-  a {
-    text-decoration: none;
-    cursor: pointer;
-  }
+  background-color: $color-gray-cultured;
 }
+
 
 
 

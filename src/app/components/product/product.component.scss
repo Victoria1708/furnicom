@@ -1,0 +1,8 @@
+@import "src/scss/abstracts/variables";
+@import "src/scss/abstracts/colors";
+
+.product {
+  height: 15rem;
+  background-color: $color-neutral;
+  border: 1px solid $color-gray-platinum;
+}
