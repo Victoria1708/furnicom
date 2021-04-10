@@ -2,13 +2,12 @@
   <div class="container">
     <div class="main-menu">
       <nav class="menu-prime">
-        <div class="menu-prime__item home-logo">
-          <a href="#"><i class="bi bi-house-fill"></i></a>
+        <div class="menu-prime__item home-logo" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+          <i class="bi bi-house-fill"></i>
         </div>
-        <div class="menu-prime__item"><a href="#">SHOP</a></div>
-        <div class="menu-prime__item"><a href="#">BLOG</a></div>
-        <div class="menu-prime__item"><a href="#">PORTFOLIOS</a></div>
-        <div class="menu-prime__item"><a href="#">PAGES</a></div>
+        <div class="menu-prime__item" routerLink="/products" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+          PRODUCTS
+        </div>
       </nav>
       <ul class="social-media-links">
         <li class="social-media-links__item"><a href="#"><i class="bi bi-facebook"></i></a></li>

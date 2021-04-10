@@ -1,5 +1,9 @@
 @import "abstracts/colors";
 
+* {
+  outline: none;
+}
+
 html {
   font-size: 10px;
 }
@@ -7,6 +11,11 @@ html {
 body {
   margin: 0;
   background-color: $color-gray-cultured;
+  overflow-y: scroll;
+}
+
+.page-container {
+  margin-top: 4rem;
 }
 
 

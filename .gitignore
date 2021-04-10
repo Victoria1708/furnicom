@@ -9,7 +9,6 @@
 
 # dependencies
 /node_modules
-/src/misc
 # profiling files
 chrome-profiler-events*.json
 speed-measure-plugin*.json
@@ -32,6 +31,7 @@ speed-measure-plugin*.json
 .history/*
 
 # misc
+/src/misc
 /.sass-cache
 /connect.lock
 /coverage
