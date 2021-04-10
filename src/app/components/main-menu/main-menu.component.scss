@@ -1,5 +1,5 @@
-@import "abstracts/variables";
-@import "abstracts/colors";
+@import "src/scss/abstracts/variables";
+@import "src/scss/abstracts/colors";
 
 $menu-height: 4rem;
 
@@ -9,6 +9,10 @@ $menu-height: 4rem;
   .main-menu {
     display: flex;
     justify-content: space-between;
+  }
+
+  .active {
+    background-color: $color-primary;
   }
 
   .menu-prime {
@@ -22,9 +26,12 @@ $menu-height: 4rem;
       justify-content: center;
       cursor: pointer;
       height: $menu-height;
+      outline: none;
+      color: $color-neutral;
+      font-weight: bold;
+      text-decoration: none;
 
       &.home-logo {
-        background-color: $color-primary;
 
         i {
           font-size: 1.8rem;
@@ -34,11 +41,6 @@ $menu-height: 4rem;
 
       &:hover {
         background-color: $color-primary;
-      }
-
-      a {
-        color: $color-neutral;
-        font-weight: bold;
       }
     }
 

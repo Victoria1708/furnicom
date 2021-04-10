@@ -1,6 +1,5 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { MainMenuComponent } from '../../main-menu/main-menu.component';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {MainMenuComponent} from '../../components/main-menu/main-menu.component';
 
 describe('MainMenuComponent', () => {
   let component: MainMenuComponent;
@@ -8,9 +7,8 @@ describe('MainMenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MainMenuComponent ]
-    })
-    .compileComponents();
+      declarations: [MainMenuComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {

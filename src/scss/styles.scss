@@ -1,4 +1,8 @@
 @import "abstracts/variables";
-@import "~bootstrap/scss/bootstrap-grid";
+
+// Vendors
+@import "vendors/bootstrap";
 @import '~bootstrap-icons/font/bootstrap-icons.css';
+
+// Global
 @import "global/base";
