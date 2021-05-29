@@ -68,7 +68,7 @@
 
 // Small grid
 //
-// Columns, offsets, pushes, and pulls for the small device range, from phones
+// Columns, offsets, pushes, and pulls for the small device resultRange, from phones
 // to tablets.
 
 @media (min-width: $screen-sm-min) {
@@ -78,7 +78,7 @@
 
 // Medium grid
 //
-// Columns, offsets, pushes, and pulls for the desktop device range.
+// Columns, offsets, pushes, and pulls for the desktop device resultRange.
 
 @media (min-width: $screen-md-min) {
   @include make-grid(md);
@@ -87,7 +87,7 @@
 
 // Large grid
 //
-// Columns, offsets, pushes, and pulls for the large desktop device range.
+// Columns, offsets, pushes, and pulls for the large desktop device resultRange.
 
 @media (min-width: $screen-lg-min) {
   @include make-grid(lg);

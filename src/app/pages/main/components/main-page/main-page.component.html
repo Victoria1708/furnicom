@@ -1,0 +1,11 @@
+<div>{{'main_page' | translate}}</div>
+<!--<app-resultRange-slider [initialFrom]="0" [initialTo]="500" [max]="10000" [step]="100"-->
+<!--                  (from)="onFromRangeChange($event)" (to)="onToRangeChange($event)"></app-resultRange-slider>-->
+
+<!--<app-resultRange-slider [initialFrom]="0" [initialTo]="500" [max]="10000" [step]="100" name="test" ngModel (ngModelChange)="onChange($event)"></app-resultRange-slider>-->
+
+<!--<button class="btn btn-default">-->
+<!--  <span>KARTINKA</span>-->
+<!--</button>-->
+{{rangeSliderControl.value | json}}
+<app-range-slider [initialFrom]="0" [initialTo]="10000" [max]="10000" [step]="100" [formControl]="rangeSliderControl"></app-range-slider>

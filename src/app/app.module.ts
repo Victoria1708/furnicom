@@ -4,24 +4,28 @@ import {AppComponent} from './app.component';
 import {HeaderComponent} from './components/header/header.component';
 import {MainMenuComponent} from './components/main-menu/main-menu.component';
 import {AppSharedModule} from './shared/shared.module';
-import {ProductsPageComponent} from './pages/products/products-page.component';
-import {ProductComponent} from './components/product/product.component';
-import {MainPageComponent} from './pages/main/main-page.component';
 import {AppRoutingModule} from './app-routing.module';
+import {HttpClientModule} from '@angular/common/http';
+import {AppStateModule} from './app-state.module';
+import {AppMainPageModule} from '@@main/main-page.module';
+import {AppProductsPageModule} from '@@products/products-page.module';
+import {AppTranslationModule} from '@@app/app-translation.module';
 
 @NgModule({
   imports: [
     BrowserModule,
+    HttpClientModule,
+    AppStateModule,
     AppSharedModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AppMainPageModule,
+    AppProductsPageModule,
+    AppTranslationModule
   ],
   declarations: [
     AppComponent,
     HeaderComponent,
-    MainMenuComponent,
-    ProductComponent,
-    ProductsPageComponent,
-    MainPageComponent
+    MainMenuComponent
   ],
   bootstrap: [AppComponent]
 })
