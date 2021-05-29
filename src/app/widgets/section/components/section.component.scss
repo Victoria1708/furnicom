@@ -1,0 +1,22 @@
+@import "abstracts/colors";
+
+$section-header-height: 5rem;
+
+.section {
+
+  &__header {
+    background-color: $color-grey-davys;
+    color: $color-neutral;
+    height: $section-header-height;
+    line-height: $section-header-height;
+    padding: 0 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+
+  &__body {
+    padding: 1rem 2rem;
+  }
+}

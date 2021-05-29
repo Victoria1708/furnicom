@@ -1,0 +1,6 @@
+<div class="dropdown">
+  <div class="dropdown__btn elem" [class.disabled]="disabled">{{selectedItem?.label}}</div>
+  <ul *ngIf="!disabled" class="dropdown__content">
+    <li class="item elem" *ngFor="let item of items" (click)="selectItem(item)">{{item.label}}</li>
+  </ul>
+</div>

@@ -1,13 +1,18 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ImageDirective} from './directives/image.directive';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {TranslateModule} from '@ngx-translate/core';
 
 const SHARED_IMPORTS = [
-  CommonModule
+  CommonModule,
+  FormsModule,
+  ReactiveFormsModule,
+  TranslateModule
 ];
 
 const SHARED_DECLARATIONS = [
-  ...[ImageDirective]
+  ...[ImageDirective],
 ];
 
 @NgModule({

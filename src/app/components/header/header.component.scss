@@ -1,3 +1,5 @@
+// sass-lint:disable no-misspelled-properties
+
 @import "src/scss/abstracts/variables";
 @import "src/scss/abstracts/colors";
 
@@ -36,8 +38,10 @@
     &__description {
       text-align: center;
 
-      p:last-child {
-        font-weight: bold;
+      p {
+        &:last-child {
+          font-weight: bold;
+        }
       }
     }
   }

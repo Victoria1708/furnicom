@@ -1,0 +1,14 @@
+<!--<section class="resultRange-slider">-->
+<!--  <span class="resultRange-values"></span>-->
+<!--  <input [min]="min" [max]="max" [step]="step" type="resultRange" [ngModel]="initialFrom" (ngModelChange)="onFromChange($event)">-->
+<!--  <input [min]="min" [max]="max" [step]="step" type="resultRange" [ngModel]="initialTo" (ngModelChange)="onToChange($event)">-->
+<!--</section>-->
+
+<section class="range-slider">
+  <span class="range-slider__line"></span>
+  <input [min]="min" [max]="max" [step]="step" type="range" [ngModel]="resultRange.from"
+         [disabled]="disabled" (ngModelChange)="onFromChange($event)">
+  <input [min]="min" [max]="max" [step]="step" type="range" [ngModel]="resultRange.to" [disabled]="disabled"
+         (ngModelChange)="onToChange($event)">
+  <span class="range-values"></span>
+</section>
