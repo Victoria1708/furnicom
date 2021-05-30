@@ -39,6 +39,12 @@ export class RangeSliderComponent implements ControlValueAccessor, OnInit {
     this.step = 1;
     this.from = new EventEmitter<number>();
     this.to = new EventEmitter<number>();
+    this.onChange = (range: SliderRange) => {
+      this.from.emit(range.from);
+      this.to.emit(range.to);
+      this.updateRangeTrackSize();
+    };
+    this.onTouched = () => {};
   }
 
   ngOnInit(): void {
@@ -57,7 +63,6 @@ export class RangeSliderComponent implements ControlValueAccessor, OnInit {
       this.range.from = this.toSliderValue;
       this.range.to = fromSliderValue;
     }
-    this.updateRangeTrackSize();
     this.onChange(this.range);
     this.onTouched();
   }
@@ -71,7 +76,6 @@ export class RangeSliderComponent implements ControlValueAccessor, OnInit {
       this.range.from = toSliderValue;
       this.range.to = this.fromSliderValue;
     }
-    this.updateRangeTrackSize();
     this.onChange(this.range);
     this.onTouched();
   }
@@ -84,8 +88,9 @@ export class RangeSliderComponent implements ControlValueAccessor, OnInit {
 
   registerOnChange(fn: any): void {
     this.onChange = (range: SliderRange) => {
-      this.from.emit(this.range.from);
-      this.to.emit(this.range.to);
+      this.from.emit(range.from);
+      this.to.emit(range.to);
+      this.updateRangeTrackSize();
       fn(range);
     };
     setTimeout(() => {

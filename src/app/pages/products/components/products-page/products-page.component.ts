@@ -1,3 +1,4 @@
+import {SliderRange} from '@@app/widgets/range-slider/models/slider-range';
 import {Component} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
@@ -12,15 +13,16 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class ProductsPageComponent {
 
-  public form: FormGroup;
+  public maxRangeValue: number;
+  public minRangeValue: number;
+  public range: SliderRange;
   public products$: Observable<any>;
 
   constructor(private store: Store<AppState>) {
+    this.maxRangeValue = 10000;
+    this.minRangeValue = 0;
+    this.range = {from: this.minRangeValue, to: this.maxRangeValue};
     this.products$ = store.pipe(select(ProductsSelectors.products));
     this.store.dispatch(ProductsActions.fetchProductList());
-    this.form = new FormGroup({
-      login: new FormControl(null),
-      password: new FormControl(null)
-    });
   }
 }
