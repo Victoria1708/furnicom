@@ -19,6 +19,8 @@ export class RangeSliderComponent implements ControlValueAccessor, OnInit {
   private onChange: (range: SliderRange) => void;
   private onTouched: () => void;
 
+  public leftRangeShift: number;
+  public rightRangeShift: number;
   public fromSliderValue: number;
   public toSliderValue: number;
   public range: SliderRange;
@@ -43,15 +45,19 @@ export class RangeSliderComponent implements ControlValueAccessor, OnInit {
     this.fromSliderValue = this.initialFrom;
     this.toSliderValue = this.initialTo;
     this.range = {from: this.initialFrom, to: this.initialTo};
+    this.updateRangeTrackSize();
   }
 
   onFromChange(fromSliderValue: number): void {
     this.fromSliderValue = fromSliderValue;
     if (fromSliderValue < this.toSliderValue) {
       this.range.from = fromSliderValue;
+      this.range.to = this.toSliderValue;
     } else {
+      this.range.from = this.toSliderValue;
       this.range.to = fromSliderValue;
     }
+    this.updateRangeTrackSize();
     this.onChange(this.range);
     this.onTouched();
   }
@@ -59,10 +65,13 @@ export class RangeSliderComponent implements ControlValueAccessor, OnInit {
   onToChange(toSliderValue: number): void {
     this.toSliderValue = toSliderValue;
     if (toSliderValue > this.fromSliderValue) {
+      this.range.from = this.fromSliderValue;
       this.range.to = toSliderValue;
     } else {
       this.range.from = toSliderValue;
+      this.range.to = this.fromSliderValue;
     }
+    this.updateRangeTrackSize();
     this.onChange(this.range);
     this.onTouched();
   }
@@ -90,5 +99,18 @@ export class RangeSliderComponent implements ControlValueAccessor, OnInit {
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
+  }
+
+  private updateRangeTrackSize(): void {
+    this.leftRangeShift = this.getLeftRangeShift();
+    this.rightRangeShift = this.getRightRangeShift();
+  }
+
+  private getLeftRangeShift(): number {
+    return this.range.from * 100 / this.max;
+  }
+
+  private getRightRangeShift(): number {
+    return (this.max - this.range.to) * 100 / this.max;
   }
 }

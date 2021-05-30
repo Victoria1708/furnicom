@@ -1,8 +1,6 @@
 <section class="range-slider">
   <div class="range-slider__line"></div>
-  <div class="range-slider__range-track"
-       [style.left.%]="range.from * 100 / max"
-       [style.right.%]="(max - range.to) * 100 / max"></div>
+  <div class="range-slider__range-track" [style.left.%]="leftRangeShift" [style.right.%]="rightRangeShift"></div>
   <input type="range" [min]="min" [max]="max" [step]="step" [ngModel]="fromSliderValue"
          [disabled]="disabled" (ngModelChange)="onFromChange($event)">
   <input type="range" [min]="min" [max]="max" [step]="step" [ngModel]="toSliderValue"
