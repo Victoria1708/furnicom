@@ -16,15 +16,15 @@ export const RANGE_SLIDER_VALUE_ACCESSOR: any = {
 })
 export class RangeSliderComponent implements ControlValueAccessor, OnInit {
 
-  private onChange: (range: SliderRange) => void;
+  private onChange: () => void;
   private onTouched: () => void;
 
   public leftRangeShift: number;
   public rightRangeShift: number;
   public fromSliderValue: number;
   public toSliderValue: number;
-  public range: SliderRange;
   public disabled: boolean;
+  public range: SliderRange;
 
   @Input() initialFrom: number;
   @Input() initialTo: number;
@@ -39,11 +39,7 @@ export class RangeSliderComponent implements ControlValueAccessor, OnInit {
     this.step = 1;
     this.from = new EventEmitter<number>();
     this.to = new EventEmitter<number>();
-    this.onChange = (range: SliderRange) => {
-      this.from.emit(range.from);
-      this.to.emit(range.to);
-      this.updateRangeTrackSize();
-    };
+    this.onChange = () => this.updateRangeTrackAndEmitOutputValues();
     this.onTouched = () => {};
   }
 
@@ -51,7 +47,7 @@ export class RangeSliderComponent implements ControlValueAccessor, OnInit {
     this.fromSliderValue = this.initialFrom;
     this.toSliderValue = this.initialTo;
     this.range = {from: this.initialFrom, to: this.initialTo};
-    this.updateRangeTrackSize();
+    this.updateRangeTrackAndEmitOutputValues();
   }
 
   onFromChange(fromSliderValue: number): void {
@@ -63,7 +59,7 @@ export class RangeSliderComponent implements ControlValueAccessor, OnInit {
       this.range.from = this.toSliderValue;
       this.range.to = fromSliderValue;
     }
-    this.onChange(this.range);
+    this.onChange();
     this.onTouched();
   }
 
@@ -76,7 +72,7 @@ export class RangeSliderComponent implements ControlValueAccessor, OnInit {
       this.range.from = toSliderValue;
       this.range.to = this.fromSliderValue;
     }
-    this.onChange(this.range);
+    this.onChange();
     this.onTouched();
   }
 
@@ -87,15 +83,11 @@ export class RangeSliderComponent implements ControlValueAccessor, OnInit {
   }
 
   registerOnChange(fn: any): void {
-    this.onChange = (range: SliderRange) => {
-      this.from.emit(range.from);
-      this.to.emit(range.to);
-      this.updateRangeTrackSize();
-      fn(range);
+    this.onChange = () => {
+      this.updateRangeTrackAndEmitOutputValues();
+      fn(this.range);
     };
-    setTimeout(() => {
-      this.onChange(this.range);
-    });
+    setTimeout(() => this.onChange());
   }
 
   registerOnTouched(fn: any): void {
@@ -106,7 +98,9 @@ export class RangeSliderComponent implements ControlValueAccessor, OnInit {
     this.disabled = isDisabled;
   }
 
-  private updateRangeTrackSize(): void {
+  private updateRangeTrackAndEmitOutputValues(): void {
+    this.from.emit(this.range.from);
+    this.to.emit(this.range.to);
     this.leftRangeShift = this.getLeftRangeShift();
     this.rightRangeShift = this.getRightRangeShift();
   }
