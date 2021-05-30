@@ -1,6 +1,6 @@
+import {SliderRange} from '@@app/widgets/range-slider/models/slider-range';
 import {Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {SliderRange} from '@@app/widgets/range-slider/models/slider-range';
 
 export const RANGE_SLIDER_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -16,11 +16,16 @@ export const RANGE_SLIDER_VALUE_ACCESSOR: any = {
 })
 export class RangeSliderComponent implements ControlValueAccessor, OnInit {
 
-  private modelRangeValue: SliderRange;
-  private onChange: (range: SliderRange) => void;
+  private onChange: () => void;
   private onTouched: () => void;
-  public resultRange: SliderRange;
+
+  public leftRangeShift: number;
+  public rightRangeShift: number;
+  public fromSliderValue: number;
+  public toSliderValue: number;
   public disabled: boolean;
+  public range: SliderRange;
+
   @Input() initialFrom: number;
   @Input() initialTo: number;
   @Input() min: number;
@@ -34,49 +39,55 @@ export class RangeSliderComponent implements ControlValueAccessor, OnInit {
     this.step = 1;
     this.from = new EventEmitter<number>();
     this.to = new EventEmitter<number>();
+    this.onChange = () => this.updateRangeTrackAndEmitOutputValues();
+    this.onTouched = () => {};
   }
 
   ngOnInit(): void {
-    this.modelRangeValue = null;
-    this.resultRange = {from: this.initialFrom, to: this.initialTo};
+    this.fromSliderValue = this.initialFrom;
+    this.toSliderValue = this.initialTo;
+    this.range = {from: this.initialFrom, to: this.initialTo};
+    this.updateRangeTrackAndEmitOutputValues();
   }
 
-  onFromChange(sliderFromValue: number): void {
-    if (sliderFromValue < this.resultRange.to) {
-      this.resultRange.from = sliderFromValue;
+  onFromChange(fromSliderValue: number): void {
+    this.fromSliderValue = fromSliderValue;
+    if (fromSliderValue < this.toSliderValue) {
+      this.range.from = fromSliderValue;
+      this.range.to = this.toSliderValue;
     } else {
-      this.resultRange.to = sliderFromValue;
+      this.range.from = this.toSliderValue;
+      this.range.to = fromSliderValue;
     }
-    this.onChange(this.resultRange);
+    this.onChange();
     this.onTouched();
   }
 
-  onToChange(sliderToValue: number): void {
-    if (sliderToValue > this.resultRange.from) {
-      this.resultRange.to = sliderToValue;
+  onToChange(toSliderValue: number): void {
+    this.toSliderValue = toSliderValue;
+    if (toSliderValue > this.fromSliderValue) {
+      this.range.from = this.fromSliderValue;
+      this.range.to = toSliderValue;
     } else {
-      this.resultRange.from = sliderToValue;
+      this.range.from = toSliderValue;
+      this.range.to = this.fromSliderValue;
     }
-    this.onChange(this.resultRange);
+    this.onChange();
     this.onTouched();
   }
 
   writeValue(range: SliderRange): void {
     if (range) {
-      this.resultRange = range;
+      this.range = range;
     }
   }
 
   registerOnChange(fn: any): void {
-    this.onChange = (range: SliderRange) => {
-      this.modelRangeValue = range;
-      this.from.emit(this.resultRange.from);
-      this.to.emit(this.resultRange.to);
-      fn(range);
+    this.onChange = () => {
+      this.updateRangeTrackAndEmitOutputValues();
+      fn(this.range);
     };
-    if (this.isValueChange()) {
-      setTimeout(() => this.onChange(this.resultRange));
-    }
+    setTimeout(() => this.onChange());
   }
 
   registerOnTouched(fn: any): void {
@@ -87,7 +98,18 @@ export class RangeSliderComponent implements ControlValueAccessor, OnInit {
     this.disabled = isDisabled;
   }
 
-  isValueChange(): boolean {
-    return this.modelRangeValue !== this.resultRange;
+  private updateRangeTrackAndEmitOutputValues(): void {
+    this.from.emit(this.range.from);
+    this.to.emit(this.range.to);
+    this.leftRangeShift = this.getLeftRangeShift();
+    this.rightRangeShift = this.getRightRangeShift();
+  }
+
+  private getLeftRangeShift(): number {
+    return this.range.from * 100 / this.max;
+  }
+
+  private getRightRangeShift(): number {
+    return (this.max - this.range.to) * 100 / this.max;
   }
 }

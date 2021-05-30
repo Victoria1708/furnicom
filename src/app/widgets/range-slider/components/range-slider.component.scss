@@ -1,18 +1,21 @@
-@mixin range-slider($width, $height, $float:none, $input-height:10px, $input-border-radius:14px) {
+@import "abstracts/colors";
+
+$slider-height: 15px;
+
+section.range-slider {
   position: relative;
-  width: $width;
-  height: $height;
-  float: $float;
+  width: 100%;
   text-align: center;
+  height: $slider-height;
 
   input[type="range"] {
     position: absolute;
     appearance: none;
     background-color: transparent;
     border: none;
-    width: $width;
+    width: 100%;
     outline: none;
-    height: $input-height;
+    height: $slider-height;
     margin: 0;
     padding: 0;
   }
@@ -22,23 +25,29 @@
     z-index: 1;
     outline: 0;
     -webkit-appearance: none;
-    width: 15px;
-    height: 15px;
+    width: $slider-height;
+    height: $slider-height;
     border: none;
-    background-color: #dadada;
+    background-color: $color-grey-neutral;
   }
 }
 
-section.range-slider {
-  @include range-slider(250px, 300px, #413F41, left);
+.range-slider__line {
+  width: 100%;
+  height: 1px;
+  background: $color-primary;
+  position: absolute;
+  top: 7px;
 }
 
-.range-slider__line {
+.range-slider__range-track {
   display: block;
-  width: 100%;
-  height: 0.7px;
-  background: #beae59;
+  height: 5px;
+  background: $color-primary;
   position: absolute;
-  top: 7.5px;
+  top: 5px;
+  margin-left: 1px;
+  margin-right: 1px;
+  width: auto;
 }
 

@@ -1,14 +1,12 @@
-import {NgModule} from '@angular/core';
+import {AppSectionModule} from '@@app/widgets/section/section.module';
 import {MainPageComponent} from '@@main/components/main-page/main-page.component';
 import {AppSharedModule} from '@@shared/shared.module';
-import {AppSectionModule} from '@@app/widgets/section/section.module';
-import {AppRangeSliderModule} from '@@app/widgets/range-slider/range-slider.module';
+import {NgModule} from '@angular/core';
 
 @NgModule({
   imports: [
     AppSharedModule,
-    AppSectionModule,
-    AppRangeSliderModule
+    AppSectionModule
   ],
   declarations: [MainPageComponent],
 })
