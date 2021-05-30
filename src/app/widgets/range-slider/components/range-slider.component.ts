@@ -1,6 +1,6 @@
+import {SliderRange} from '@@app/widgets/range-slider/models/slider-range';
 import {Component, EventEmitter, forwardRef, Input, OnInit, Output} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {SliderRange} from '@@app/widgets/range-slider/models/slider-range';
 
 export const RANGE_SLIDER_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,
@@ -16,11 +16,14 @@ export const RANGE_SLIDER_VALUE_ACCESSOR: any = {
 })
 export class RangeSliderComponent implements ControlValueAccessor, OnInit {
 
-  private modelRangeValue: SliderRange;
   private onChange: (range: SliderRange) => void;
   private onTouched: () => void;
-  public resultRange: SliderRange;
+
+  public fromSliderValue: number;
+  public toSliderValue: number;
+  public range: SliderRange;
   public disabled: boolean;
+
   @Input() initialFrom: number;
   @Input() initialTo: number;
   @Input() min: number;
@@ -37,46 +40,48 @@ export class RangeSliderComponent implements ControlValueAccessor, OnInit {
   }
 
   ngOnInit(): void {
-    this.modelRangeValue = null;
-    this.resultRange = {from: this.initialFrom, to: this.initialTo};
+    this.fromSliderValue = this.initialFrom;
+    this.toSliderValue = this.initialTo;
+    this.range = {from: this.initialFrom, to: this.initialTo};
   }
 
-  onFromChange(sliderFromValue: number): void {
-    if (sliderFromValue < this.resultRange.to) {
-      this.resultRange.from = sliderFromValue;
+  onFromChange(fromSliderValue: number): void {
+    this.fromSliderValue = fromSliderValue;
+    if (fromSliderValue < this.toSliderValue) {
+      this.range.from = fromSliderValue;
     } else {
-      this.resultRange.to = sliderFromValue;
+      this.range.to = fromSliderValue;
     }
-    this.onChange(this.resultRange);
+    this.onChange(this.range);
     this.onTouched();
   }
 
-  onToChange(sliderToValue: number): void {
-    if (sliderToValue > this.resultRange.from) {
-      this.resultRange.to = sliderToValue;
+  onToChange(toSliderValue: number): void {
+    this.toSliderValue = toSliderValue;
+    if (toSliderValue > this.fromSliderValue) {
+      this.range.to = toSliderValue;
     } else {
-      this.resultRange.from = sliderToValue;
+      this.range.from = toSliderValue;
     }
-    this.onChange(this.resultRange);
+    this.onChange(this.range);
     this.onTouched();
   }
 
   writeValue(range: SliderRange): void {
     if (range) {
-      this.resultRange = range;
+      this.range = range;
     }
   }
 
   registerOnChange(fn: any): void {
     this.onChange = (range: SliderRange) => {
-      this.modelRangeValue = range;
-      this.from.emit(this.resultRange.from);
-      this.to.emit(this.resultRange.to);
+      this.from.emit(this.range.from);
+      this.to.emit(this.range.to);
       fn(range);
     };
-    if (this.isValueChange()) {
-      setTimeout(() => this.onChange(this.resultRange));
-    }
+    setTimeout(() => {
+      this.onChange(this.range);
+    });
   }
 
   registerOnTouched(fn: any): void {
@@ -85,9 +90,5 @@ export class RangeSliderComponent implements ControlValueAccessor, OnInit {
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
-  }
-
-  isValueChange(): boolean {
-    return this.modelRangeValue !== this.resultRange;
   }
 }
