@@ -1,3 +1,4 @@
+@import "abstracts/variables";
 @import "abstracts/colors";
 
 * {
@@ -12,6 +13,7 @@ body {
   margin: 0;
   background-color: $color-gray-cultured;
   overflow-y: scroll;
+  font-size: $font-size-normal;
 }
 
 .page-container {

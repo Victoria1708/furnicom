@@ -1,6 +1,6 @@
 import {createFeatureSelector, createSelector} from '@ngrx/store';
-import {AppState} from '../../models/app-state';
-import {ProductsState} from '../../models/products-state';
+import {AppState} from '../../shared/models/app-state';
+import {ProductsState} from '../../shared/models/products-state';
 import {PRODUCTS_STATE_STORE_KEY} from '../index';
 
 export namespace ProductsSelectors {

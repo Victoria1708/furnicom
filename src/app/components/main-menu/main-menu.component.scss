@@ -1,5 +1,5 @@
-@import "src/scss/abstracts/variables";
-@import "src/scss/abstracts/colors";
+@import "abstracts/variables";
+@import "abstracts/colors";
 
 $menu-height: 4rem;
 
@@ -28,8 +28,9 @@ $menu-height: 4rem;
       height: $menu-height;
       outline: none;
       color: $color-neutral;
-      font-weight: bold;
+      font-weight: $font-weight-bold;
       text-decoration: none;
+      text-transform: uppercase;
 
       &.home-logo {
 
@@ -48,7 +49,7 @@ $menu-height: 4rem;
       padding: 0 3rem;
 
       a {
-        font-weight: bold;
+        font-weight: $font-weight-bold;
         color: $color-warning;
 
         &:hover {

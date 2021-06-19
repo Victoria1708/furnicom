@@ -10,6 +10,7 @@ import {AppStateModule} from './app-state.module';
 import {AppMainPageModule} from '@@main/main-page.module';
 import {AppProductsPageModule} from '@@products/products-page.module';
 import {AppTranslationModule} from '@@app/app-translation.module';
+import {AppDropdownModule} from '@@app/widgets/dropdown/dropdown.module';
 
 @NgModule({
   imports: [
@@ -20,12 +21,13 @@ import {AppTranslationModule} from '@@app/app-translation.module';
     AppRoutingModule,
     AppMainPageModule,
     AppProductsPageModule,
-    AppTranslationModule
+    AppTranslationModule,
+    AppDropdownModule
   ],
   declarations: [
     AppComponent,
     HeaderComponent,
-    MainMenuComponent
+    MainMenuComponent,
   ],
   bootstrap: [AppComponent]
 })

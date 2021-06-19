@@ -3,7 +3,7 @@ import {StoreModule} from '@ngrx/store';
 import {productsReducer} from './store/reducers/products.reducer';
 import {ActionReducerMap} from '@ngrx/store/src/models';
 import {EffectsModule} from '@ngrx/effects';
-import {AppState} from './models/app-state';
+import {AppState} from './shared/models/app-state';
 import {ProductsEffects} from './store/effects/products.effects';
 import {PRODUCTS_STATE_STORE_KEY} from './store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';

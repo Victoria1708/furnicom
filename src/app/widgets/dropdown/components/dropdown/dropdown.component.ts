@@ -19,8 +19,22 @@ export class DropdownComponent implements ControlValueAccessor {
   private onChange: (value: ListItem) => void;
   private onTouched: () => void;
   public disabled: boolean;
+  public open: boolean;
   public selectedItem: ListItem;
   @Input() items: ListItem[];
+
+  constructor() {
+    this.onChange = (item: ListItem) => this.selectValue(item);
+    this.onTouched = () => {};
+  }
+
+  openDropdown(): void {
+    this.open = true;
+  }
+
+  closeDropdown(): void {
+    this.open = false;
+  }
 
   selectItem(item: ListItem): void {
     this.onChange(item);
@@ -33,7 +47,7 @@ export class DropdownComponent implements ControlValueAccessor {
 
   registerOnChange(fn: any): void {
     this.onChange = (item: ListItem) => {
-      this.selectedItem = item;
+      this.selectValue(item);
       fn(item.value);
     };
   }
@@ -44,5 +58,10 @@ export class DropdownComponent implements ControlValueAccessor {
 
   setDisabledState?(isDisabled: boolean): void {
     this.disabled = isDisabled;
+  }
+
+  private selectValue(item: ListItem): void {
+    this.selectedItem = item;
+    this.closeDropdown();
   }
 }

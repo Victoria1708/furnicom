@@ -1,6 +1,6 @@
 import {Action, createReducer, on} from '@ngrx/store';
 import {ProductsActions} from '../actions/products.actions';
-import {ProductsState} from '../../models/products-state';
+import {ProductsState} from '../../shared/models/products-state';
 
 const initialState: ProductsState = {
   loading: false,

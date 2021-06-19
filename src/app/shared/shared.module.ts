@@ -3,6 +3,9 @@ import {CommonModule} from '@angular/common';
 import {ImageDirective} from './directives/image.directive';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TranslateModule} from '@ngx-translate/core';
+import {ProductComponent} from '@@app/components/product/product.component';
+import {FullSizeProductComponent} from '@@app/components/product/full-size-product.component';
+import {CompactProductComponent} from '@@app/components/product/compact-product.component';
 
 const SHARED_IMPORTS = [
   CommonModule,
@@ -12,7 +15,14 @@ const SHARED_IMPORTS = [
 ];
 
 const SHARED_DECLARATIONS = [
-  ...[ImageDirective],
+  ...[
+    ProductComponent,
+    FullSizeProductComponent,
+    CompactProductComponent
+  ],
+  ...[
+    ImageDirective
+  ],
 ];
 
 @NgModule({

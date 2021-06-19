@@ -1,0 +1,14 @@
+@import "abstracts/variables";
+@import "abstracts/colors";
+@import "abstracts/sprites";
+
+@mixin icon-activation-effect($params) {
+  transition: 0.2s;
+  overflow: hidden;
+  background: url("#{$images-path}/bg_general.png") no-repeat map-get($params, "nonActiveIcon");
+
+  &#{map-get($params, "activationEffect")} {
+    background-color: $color-primary;
+    background-position: map-get($params, "activeIcon");
+  }
+}

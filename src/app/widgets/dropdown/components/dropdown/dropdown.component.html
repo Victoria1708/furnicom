@@ -1,6 +1,12 @@
 <div class="dropdown">
-  <div class="dropdown__btn elem" [class.disabled]="disabled">{{selectedItem?.label}}</div>
-  <ul *ngIf="!disabled" class="dropdown__content">
-    <li class="item elem" *ngFor="let item of items" (click)="selectItem(item)">{{item.label}}</li>
+  <div class="dropdown__value list-item"
+       [class.disabled]="disabled"
+       (mouseenter)="openDropdown()"
+       (mouseleave)="closeDropdown()">{{selectedItem?.label}}</div>
+  <ul class="dropdown__content"
+      [style.opacity]="open ? 1 : 0"
+      (mouseenter)="openDropdown()"
+      (mouseleave)="closeDropdown()">
+    <li class="item list-item" *ngFor="let item of items" (click)="selectItem(item)">{{item.label}}</li>
   </ul>
 </div>

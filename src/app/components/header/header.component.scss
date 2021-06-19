@@ -1,7 +1,7 @@
 // sass-lint:disable no-misspelled-properties
 
-@import "src/scss/abstracts/variables";
-@import "src/scss/abstracts/colors";
+@import "abstracts/variables";
+@import "abstracts/colors";
 
 .header-wrapper {
   background-color: $color-gray-cultured;
@@ -40,7 +40,7 @@
 
       p {
         &:last-child {
-          font-weight: bold;
+          font-weight: $font-weight-bold;
         }
       }
     }

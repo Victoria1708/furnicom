@@ -10,4 +10,12 @@ $screen-md: 960px;
 $screen-lg: 1200px;
 
 // Global
+$assets-path: "/assets";
+$images-path: "#{$assets-path}/images";
 $shopping-cart-width: 14rem;
+
+// Typography
+$font-weight-normal: normal;
+$font-weight-bold: bold;
+
+$font-size-normal: 1.3rem;

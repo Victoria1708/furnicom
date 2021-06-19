@@ -1,17 +1,27 @@
 <div class="row">
   <aside class="col-md-3">
-    <app-section [caption]="'Shop by'">
+    <app-section [caption]="'shop_by' | translate">
       <app-range-slider [initialFrom]="minRangeValue" [initialTo]="maxRangeValue" [max]="maxRangeValue" [step]="100"
                         (from)="range.from = $event" (to)="range.to = $event"></app-range-slider>
-      <br>
-      <input type="text" [value]="range.from">
-      <input type="text" [value]="range.to">
+      <div class="range-values-container">
+        <div class="range-controls">
+          <input class="form-control" [value]="range.from">
+          <input class="form-control" [value]="range.to">
+        </div>
+        <button class="btn btn-primary filter-btn">{{'filter' | translate}}</button>
+      </div>
     </app-section>
   </aside>
   <div class="col-md-9">
+    <app-products-nav (viewTypeChanged)="onViewTypeChange($event)"></app-products-nav>
     <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-4 product-wrapper" *ngFor="let product of (products$ | async)">
-        <app-product  [product]="product"></app-product>
+      <div class="product-wrapper"
+           *ngFor="let product of (products$ | async)"
+           [ngClass]="{
+              'col-xs-12 col-sm-6 col-md-4': productsViewType === ViewType.GRID,
+              'col-xs-12': productsViewType === ViewType.LIST
+           }">
+        <app-product [product]="product"></app-product>
       </div>
     </div>
   </div>

@@ -1,0 +1,62 @@
+@import "abstracts/colors";
+@import "abstracts/variables";
+
+.btn {
+  text-transform: uppercase;
+
+  &,
+  &:active,
+  &.active {
+    &:focus,
+    &.focus {
+      outline: none;
+    }
+  }
+
+  &:hover,
+  &:focus,
+  &.focus {
+    outline: none;
+  }
+
+  &:active,
+  &.active {
+    outline: none;
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    // TODO ...
+  }
+}
+
+.btn-primary {
+  color: $color-neutral;
+  font-weight: $font-weight-bold;
+  background-color: $color-grey-davys;
+  border-color: $color-grey-davys;
+
+  &,
+  &:active,
+  &.active {
+    &:focus,
+    &.focus {
+      border-color: $color-dark-darkest;
+      background-color: $color-dark-darkest;
+    }
+  }
+
+  &:hover,
+  &:focus,
+  &.focus {
+    border-color: $color-dark-darkest;
+    background-color: $color-dark-darkest;
+  }
+
+  &:active,
+  &.active {
+    border-color: $color-dark-darkest;
+    background-color: $color-dark-darkest;
+  }
+}

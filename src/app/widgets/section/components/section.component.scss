@@ -1,4 +1,5 @@
 @import "abstracts/colors";
+@import "abstracts/variables";
 
 $section-header-height: 5rem;
 
@@ -11,12 +12,12 @@ $section-header-height: 5rem;
     line-height: $section-header-height;
     padding: 0 2rem;
     font-size: 2rem;
-    font-weight: bold;
+    font-weight: $font-weight-bold;
     white-space: nowrap;
     text-transform: uppercase;
   }
 
   &__body {
-    padding: 1rem 2rem;
+    padding: 2rem 0;
   }
 }

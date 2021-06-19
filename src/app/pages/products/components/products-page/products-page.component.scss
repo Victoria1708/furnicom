@@ -1,4 +1,24 @@
+@import "abstracts/colors";
 
 .product-wrapper {
   padding-bottom: 3rem;
+}
+
+.range-values-container {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.range-controls {
+  display: flex;
+}
+
+.form-control {
+  margin-right: 1rem;
+  width: 7rem;
+
+  &:hover {
+    background-color: $color-neutral;
+  }
 }

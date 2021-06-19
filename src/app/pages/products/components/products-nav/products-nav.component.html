@@ -1,0 +1,15 @@
+<div class="nav-container">
+  <p class="nav-container__text">{{'sort_by' | translate}}:</p>
+  <app-dropdown [items]="items" [(ngModel)]="sortBy"></app-dropdown>
+  <div class="empty"></div>
+  <p class="view-mode-switcher">
+    <a class="view-mode-switcher__item grid-view"
+       [class.active]="viewType === ViewTypes.GRID"
+       (click)="selectViewType(ViewTypes.GRID)">
+    </a>
+    <a class="view-mode-switcher__item list-view"
+       [class.active]="viewType === ViewTypes.LIST"
+       (click)="selectViewType(ViewTypes.LIST)">
+    </a>
+  </p>
+</div>
