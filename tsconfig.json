@@ -8,7 +8,8 @@
       "@@app/*": ["src/app/*"],
       "@@shared/*": ["src/app/shared/*"],
       "@@products/*": ["src/app/pages/products/*"],
-      "@@main/*": ["src/app/pages/main/*"]
+      "@@main/*": ["src/app/pages/main/*"],
+      "@@dashboard/*": ["src/app/dashboard/*"]
     },
     "sourceMap": true,
     "declaration": false,

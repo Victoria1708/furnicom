@@ -6,7 +6,7 @@ import {ProductsPageComponent} from './pages/products/components/products-page/p
 const routes: Routes = [
   {path: '', component: MainPageComponent},
   {path: 'products', component: ProductsPageComponent},
-  // {path: 'admin', component: ''},
+  {path: 'dashboard', loadChildren: () => import('./dashboard/app-dashboard.module').then(m => m.AppDashboardModule)},
   {path: '**', redirectTo: '/'}
 ];
 
