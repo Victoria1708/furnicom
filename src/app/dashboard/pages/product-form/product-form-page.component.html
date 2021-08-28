@@ -1,0 +1,23 @@
+<div class="form-container">
+  <form [formGroup]="createProductForm" (ngSubmit)="onSubmit()">
+  <span class="p-float-label">
+    <input id="productName" type="text" pInputText formControlName="name">
+    <label for="productName">Product</label>
+  </span>
+    <span class="p-float-label">
+  <p-inputNumber mode="currency" currency="USD" formControlName="price"></p-inputNumber>
+    <label>Price</label>
+  </span>
+    <span class="p-float-label stretchInput">
+    <input id="imageUrl" type="text" pInputText formControlName="imgUrl">
+    <label for="imageUrl">imageUrl</label>
+  </span>
+    <button pButton type="submit" label="Create" class="p-button-info"></button>
+  </form>
+</div>
+
+<div class="p-inputtext-sm">
+  <input type="text" pInputText>
+  <p-inputnumber></p-inputnumber>
+  <p-inputmask></p-inputmask>
+</div>
