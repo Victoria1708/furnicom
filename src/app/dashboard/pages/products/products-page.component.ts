@@ -17,7 +17,6 @@ export class ProductsPageComponent implements OnInit {
               private cdr: ChangeDetectorRef) {
   }
 
-
   ngOnInit(): void {
     this.dashboardProductRestService.getAll$().subscribe((products: DashboardProduct[]) => {
       this.products = products;

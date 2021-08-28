@@ -4,9 +4,7 @@ import {Router} from '@angular/router';
 @Injectable({providedIn: 'root'})
 export class DashboardNavigationService {
 
-  constructor(private router: Router) {
-    console.log('DashboardNavigationService');
-  }
+  constructor(private router: Router) {}
 
   goToCreateProductPage(): void {
     this.router.navigate(['/dashboard/products/create']);

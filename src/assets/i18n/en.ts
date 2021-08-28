@@ -7,5 +7,6 @@ export const en: Translation = {
   add_to_cart: 'add to cart',
   shop_by: 'shop by',
   filter: 'filter',
-  sort_by: 'Sort by'
+  sort_by: 'Sort by',
+  create_product: 'Create product'
 };

@@ -6,4 +6,5 @@ export interface Translation {
   shop_by: string;
   filter: string;
   sort_by: string;
+  create_product: string;
 }

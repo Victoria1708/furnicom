@@ -7,5 +7,6 @@ export const ru: Translation = {
   add_to_cart: 'купить',
   shop_by: 'ценовой диапазон',
   filter: 'Искать',
-  sort_by: 'Сортировать по'
+  sort_by: 'Сортировать по',
+  create_product: 'Создать продукт'
 };
