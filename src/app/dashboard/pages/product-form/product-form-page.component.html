@@ -1,11 +1,30 @@
-<form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+<div class="row">
+  <div class="col-sm-6">
+    <ng-container *ngIf="imagePath">
+      <img [src]="imagePath" width="300" alt="img to upload">
+    </ng-container>
   </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  <div class="col-sm-6">
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+      <div class="form-group"
+           [class.has-error]="productForm.controls.name.invalid && productForm.controls.name.touched">
+        <label for="product-name" class="control-label">Product name</label>
+        <input type="text" class="form-control" id="product-name" formControlName="name" autocomplete="off">
+        <ng-container *ngIf="productForm.controls.name.invalid && productForm.controls.name.touched">
+          <span *ngIf="productForm.controls.name.errors.required" class="help-block">Required</span>
+          <span *ngIf="productForm.controls.name.errors.minlength" class="help-block">Value is too short</span>
+        </ng-container>
+      </div>
+      <div class="form-group">
+        <label for="product-price" class="control-label">Price</label>
+        <input type="number" class="form-control" id="product-price" formControlName="price">
+      </div>
+      <div class="form-group">
+        <label for="image-url" class="control-label">Image url</label>
+        <input #fileInput type="file" class="form-control" id="image-url" accept="image/*" style="display:none" (change)="onFileSelected($event.target.files)">
+        <button type="button" (click)="fileInput.click()">UPLOAD</button>
+      </div>
+      <button type="submit" class="btn btn-primary create-product-btn">Submit</button>
+    </form>
   </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
+</div>
