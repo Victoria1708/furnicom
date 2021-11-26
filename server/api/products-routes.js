@@ -17,23 +17,24 @@ router.get('/products', (req, res) => {
 
 router.post('/products', (req, res) => {
   const form = formidable({multiples: true});
-  form.parse(req, (err, fields, files) => {
+  form.parse(req, (err, productProperties, files) => {
     if (err) {
       res.status(StatusCodes.BAD_REQUEST).send(err);
       return;
     }
-    const tmpPath = files.img.path;
-    const filePath = path.join(config.productImagesPath, files.img.name);
-    const fileData = fs.readFileSync(tmpPath);
-    fs.writeFile(filePath, fileData, function (err) {
-      if (err) {
-        res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(err);
-        return;
-      }
+
+    const imageFiles = files.images;
+    const promises = imageFiles.map(image => {
+      const sourcePath = image.path; // temporary system dir
+      const destinationPath = path.join(config.productImagesPath, image.name);
+      return copyFile(sourcePath, destinationPath);
+    });
+
+    Promise.all(promises).then(() => {
       const product = new Product({
-        name: fields.name,
-        price: fields.price,
-        imgUrl: 'image url' // TODO
+        name: productProperties.name,
+        price: productProperties.price,
+        images: imageFiles.map(file => file.name)
       });
       product.save(function (err) {
         if (err) {
@@ -42,6 +43,8 @@ router.post('/products', (req, res) => {
         }
         res.send(product);
       });
+    }).catch(err => {
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(err);
     });
   });
 });
@@ -65,5 +68,16 @@ router.delete('/products/:id', (req, res) => {
     res.end();
   });
 });
+
+function copyFile(sourcePath, destinationPath) {
+  const input = fs.createReadStream(sourcePath);
+  const output = fs.createWriteStream(destinationPath);
+  return new Promise((resolve, reject) => {
+    output.on('error', reject);
+    input.on('error', reject);
+    input.on('end', resolve);
+    input.pipe(output);
+  });
+}
 
 module.exports = router;

@@ -7,4 +7,13 @@ export interface Translation {
   filter: string;
   sort_by: string;
   create_product: string;
+  product: {
+    name: string,
+    price: string,
+  };
+  validation: {
+    [key: string]: string | {};
+    required: string;
+    minlength: string;
+  };
 }

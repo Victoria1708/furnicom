@@ -1,12 +1,13 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ImageDirective} from './directives/image.directive';
+import {ImageDirective} from '../core/directives/image.directive';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TranslateModule} from '@ngx-translate/core';
 import {ProductComponent} from '@@app/components/product/product.component';
 import {FullSizeProductComponent} from '@@app/components/product/full-size-product.component';
 import {CompactProductComponent} from '@@app/components/product/compact-product.component';
 import {HttpClientModule} from '@angular/common/http';
+import {NumberDirective} from '@@app/core/directives/number.directive';
 
 const SHARED_IMPORTS = [
   CommonModule,
@@ -23,7 +24,8 @@ const SHARED_DECLARATIONS = [
     CompactProductComponent
   ],
   ...[
-    ImageDirective
+    ImageDirective,
+    NumberDirective,
   ],
 ];
 

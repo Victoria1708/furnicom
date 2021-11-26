@@ -8,5 +8,13 @@ export const ru: Translation = {
   shop_by: 'ценовой диапазон',
   filter: 'Искать',
   sort_by: 'Сортировать по',
-  create_product: 'Создать продукт'
+  create_product: 'Создать продукт',
+  product: {
+    name: 'Имя продукта',
+    price: 'Цена',
+  },
+  validation: {
+    required: 'Обязательное поле',
+    minlength: 'Значение слишком короткое. Минимум {{requiredLength}} символов.'
+  }
 };

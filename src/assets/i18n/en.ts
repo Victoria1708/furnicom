@@ -8,5 +8,13 @@ export const en: Translation = {
   shop_by: 'shop by',
   filter: 'filter',
   sort_by: 'Sort by',
-  create_product: 'Create product'
+  product: {
+    name: 'Product name',
+    price: 'Price',
+  },
+  create_product: 'Create product',
+  validation: {
+    required: 'Required',
+    minlength: 'Value is too short. Min {{requiredLength}} required.'
+  }
 };

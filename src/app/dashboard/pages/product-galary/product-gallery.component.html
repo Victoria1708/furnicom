@@ -1,0 +1,10 @@
+<div class="main-img">
+  <i *ngIf="!mainGalleryItem" class="bi bi-camera large-icon"></i>
+  <img *ngIf="mainGalleryItem" class="product-photo" alt="img to upload" [src]="mainGalleryItem?.imagePath">
+</div>
+<div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)" class="additional-img-container">
+  <div *ngFor="let item of galleryItems; let i = index" class="additional-img" cdkDrag>
+    <i *ngIf="!getImagePath(i)" class="bi bi-camera small-icon"></i>
+    <img *ngIf="getImagePath(i)" class="product-photo" alt="img to upload" [src]="item.imagePath" (click)="setMainImageByIndex(i)">
+  </div>
+</div>

@@ -11,6 +11,11 @@ import {AppMainPageModule} from '@@main/main-page.module';
 import {AppProductsPageModule} from '@@products/products-page.module';
 import {AppTranslationModule} from '@@app/app-translation.module';
 import {AppDropdownModule} from '@@app/widgets/dropdown/dropdown.module';
+import {IConfig, NgxMaskModule} from 'ngx-mask';
+
+const maskConfig: Partial<IConfig> = {
+  validation: true
+};
 
 @NgModule({
   imports: [
@@ -22,7 +27,8 @@ import {AppDropdownModule} from '@@app/widgets/dropdown/dropdown.module';
     AppMainPageModule,
     AppProductsPageModule,
     AppTranslationModule,
-    AppDropdownModule
+    AppDropdownModule,
+    NgxMaskModule.forRoot(maskConfig)
   ],
   declarations: [
     AppComponent,

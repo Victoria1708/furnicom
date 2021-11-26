@@ -1,30 +1,22 @@
 <div class="row">
   <div class="col-sm-6">
-    <ng-container *ngIf="imagePath">
-      <img [src]="imagePath" width="300" alt="img to upload">
-    </ng-container>
+    <app-product-gallery [files]="imageFiles"></app-product-gallery>
   </div>
   <div class="col-sm-6">
-    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
-      <div class="form-group"
-           [class.has-error]="productForm.controls.name.invalid && productForm.controls.name.touched">
-        <label for="product-name" class="control-label">Product name</label>
+    <form [formGroup]="productForm">
+      <app-control-wrapper label="{{'product.name' | translate}}">
         <input type="text" class="form-control" id="product-name" formControlName="name" autocomplete="off">
-        <ng-container *ngIf="productForm.controls.name.invalid && productForm.controls.name.touched">
-          <span *ngIf="productForm.controls.name.errors.required" class="help-block">Required</span>
-          <span *ngIf="productForm.controls.name.errors.minlength" class="help-block">Value is too short</span>
-        </ng-container>
-      </div>
+      </app-control-wrapper>
+      <app-control-wrapper label="{{'product.price' | translate}}">
+        <input mask="0*.00" type="text" class="form-control" id="product-price" formControlName="price" autocomplete="off">
+      </app-control-wrapper>
       <div class="form-group">
-        <label for="product-price" class="control-label">Price</label>
-        <input type="number" class="form-control" id="product-price" formControlName="price">
+        <label for="image-url" class="control-label"></label>
+        <input #fileInput type="file" class="form-control" id="image-url" accept="image/*" multiple style="display:none"
+               (change)="onFilesSelected($event.target.files)">
+        <button class="btn btn-light" (click)="fileInput.click()"><i class="bi bi-box-arrow-down"></i></button>
       </div>
-      <div class="form-group">
-        <label for="image-url" class="control-label">Image url</label>
-        <input #fileInput type="file" class="form-control" id="image-url" accept="image/*" style="display:none" (change)="onFileSelected($event.target.files)">
-        <button type="button" (click)="fileInput.click()">UPLOAD</button>
-      </div>
-      <button type="submit" class="btn btn-primary create-product-btn">Submit</button>
+      <button type="button" class="btn btn-primary create-product-btn" (click)="onSubmit()">Submit</button>
     </form>
   </div>
 </div>
