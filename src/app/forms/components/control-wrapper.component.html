@@ -1,17 +1,5 @@
 <div class="form-group" [class.has-error]="hasMessage">
   <label *ngIf="label" class="control-label">{{label}}</label>
   <ng-content></ng-content>
-  <span *ngIf="message" class="help-block">{{message}}</span>
+  <span *ngIf="message" class="help-block">{{message.translationKey | translate:message.params}}</span>
 </div>
-
-
-<!--<div class="form-group"-->
-<!--     [class.has-error]="productForm.controls.name.invalid && productForm.controls.name.touched">-->
-<!--  <label for="product-name" class="control-label">Product name</label>-->
-<!--  <input type="text" class="form-control" id="product-name" formControlName="name" autocomplete="off">-->
-<!--  <pre>{{productForm.controls.name.errors | json}}</pre>-->
-<!--  <ng-container *ngIf="productForm.controls.name.invalid && productForm.controls.name.touched">-->
-<!--    <span *ngIf="productForm.controls.name.errors.required" class="help-block">Required</span>-->
-<!--    <span *ngIf="productForm.controls.name.errors.minlength" class="help-block">Value is too short</span>-->
-<!--  </ng-container>-->
-<!--</div>-->

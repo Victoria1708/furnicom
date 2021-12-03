@@ -4,6 +4,7 @@ import {FormControlUtils} from '@@app/forms/utils/form-control.utils';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {FieldControl} from '@@app/forms/models/forms';
+import {FieldMessage} from '@@app/forms/models/field-message';
 
 @Component({
   selector: 'app-control-wrapper',
@@ -16,7 +17,7 @@ export class ControlWrapperComponent implements AfterViewInit, OnDestroy {
   private unsubscribe$: Subject<void>;
   @ContentChild(NgControl) ngControl: NgControl;
   public control: FieldControl;
-  public message: string;
+  public message: FieldMessage;
   public hasMessage: boolean;
 
   @Input() label: string;

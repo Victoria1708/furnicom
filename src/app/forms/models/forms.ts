@@ -40,6 +40,10 @@ export class Form<T> extends FormGroup {
       this.touchedChangesSubject.next(false);
     }
   }
+
+  getRawValue(): T {
+    return super.getRawValue() as T;
+  }
 }
 
 export class FieldControl extends FormControl {

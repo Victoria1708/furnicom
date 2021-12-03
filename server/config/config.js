@@ -1,5 +1,6 @@
 const path = require('path');
 
 module.exports = {
-  productImagesPath: path.join(__dirname, '..', 'static', 'product-images')
+  productImagesPath: path.join(__dirname, '..', 'static', 'product-images'),
+  userPasswordSalt: 'ksdflkjas;dlkfkj;alskdkjfdjf'
 };

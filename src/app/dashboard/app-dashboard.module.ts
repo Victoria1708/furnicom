@@ -3,7 +3,7 @@ import {ProductsPageComponent} from '@@dashboard/pages/products/products-page.co
 import {AppDashboardRoutingModule} from '@@dashboard/app-dashboard-routing.module';
 import {ProductFormPageComponent} from '@@dashboard/pages/product-form/product-form-page.component';
 import {AppSharedModule} from '@@shared/shared.module';
-import {ProductGalleryComponent} from '@@dashboard/pages/product-galary/product-gallery.component';
+import {ProductGalleryComponent} from '@@dashboard/components/product-galary/product-gallery.component';
 import {AppFormsModule} from '@@app/forms/app-forms.module';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {NgxMaskModule} from 'ngx-mask';

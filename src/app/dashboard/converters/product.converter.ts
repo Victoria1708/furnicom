@@ -1,12 +1,13 @@
 import {Product} from '@@shared/models/product';
+import {ProductForm} from '@@dashboard/models/product-form';
 
 export class ProductConverter {
 
-  static toProduct(formValue: any): Product {
+  static toProduct(formValue: ProductForm): Product {
     return {
       name: formValue.name,
       price: formValue.price,
-      img: formValue.img
+      images: formValue.images.map(f => f.name)
     };
   }
 }

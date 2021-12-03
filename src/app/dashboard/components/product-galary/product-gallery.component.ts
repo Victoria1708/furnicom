@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {ProductGalleryItem} from '@@dashboard/models/product-gallery-item';
 import {ProductsConfig} from '@@dashboard/config/products.config';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
@@ -41,6 +41,10 @@ export class ProductGalleryComponent implements OnInit {
     return this.galleryItems[itemIndex]?.imagePath;
   }
 
+  drop(event: CdkDragDrop<string[]>): void {
+    moveItemInArray(this.galleryItems, event.previousIndex, event.currentIndex);
+  }
+
   private async loadGalleryItems(files: File[]): Promise<any> {
     const imagesPaths = await Promise.all(this.readFilesAsDataURLs$(files));
     if (imagesPaths.length) {
@@ -67,10 +71,6 @@ export class ProductGalleryComponent implements OnInit {
       fr.onerror = reject;
       fr.readAsDataURL(file);
     });
-  }
-
-  drop(event: CdkDragDrop<string[]>): void{
-    moveItemInArray(this.galleryItems, event.previousIndex, event.currentIndex);
   }
 
   private getSaveFileUrl(file: File): SafeUrl {

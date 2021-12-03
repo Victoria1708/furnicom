@@ -8,6 +8,14 @@ const path = require('path');
 
 const router = express.Router();
 
+router.get('/public', (req, res) => {
+  res.end('Public data');
+});
+
+router.get('/private', (req, res) => {
+  res.end('Private data');
+});
+
 router.get('/products', (req, res) => {
   Product.find(function (err, products) {
     if (err) return console.error(err);
